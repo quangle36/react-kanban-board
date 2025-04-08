@@ -1,33 +1,13 @@
-import React, { useCallback } from 'react';
-import { Card, Button, Tooltip, Popconfirm, Avatar } from 'antd';
-import { PlusOutlined, DeleteOutlined, EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-import { mockData } from './data';
 import TrelloList from './TrelloList';
-
-const { Meta } = Card;
+import { useTrelloContext } from './contexts/TrelloContext';
+import Button from 'antd/es/button';
 
 function App() {
-  const [dataSource, setDataSource] = React.useState<any>(mockData)
-  console.log("dataSource: ", dataSource)
+  const { trello, onDragEnd } = useTrelloContext();
+  console.log("dataSource: ", trello)
 
-  const onBeforeCapture = useCallback(() => {
-    /*...*/
-  }, []);
-  const onBeforeDragStart = useCallback(() => {
-    /*...*/
-  }, []);
-  const onDragStart = useCallback(() => {
-    /*...*/
-  }, []);
-  const onDragUpdate = useCallback(() => {
-    /*...*/
-  }, []);
-  const onDragEnd = useCallback(() => {
-    // the only one that is required
-  }, []);
-  
   return (
     <>
       <header>
@@ -44,14 +24,10 @@ function App() {
       <main>
         <div className="container">
           <DragDropContext
-            onBeforeCapture={onBeforeCapture}
-            onBeforeDragStart={onBeforeDragStart}
-            onDragStart={onDragStart}
-            onDragUpdate={onDragUpdate}
             onDragEnd={onDragEnd}
           >
             <Droppable droppableId="all-lists" type="LIST" direction="horizontal">
-              {(provided, snapshot) => (
+              {(provided) => (
                 <div
                   ref={provided.innerRef}
                   style={{ 
@@ -62,11 +38,9 @@ function App() {
                   {...provided.droppableProps}
                 >
                   <>
-                    {dataSource.columns.map((column: string, index: number) => {
-                      const listItem = dataSource.lists[column] || {};
-                      const cards = (listItem.cards || []).map((cardId: string) => dataSource.cards[cardId])
-
-                      console.log('listItem: ', cards)
+                    {trello?.columns.map((column: string, index: number) => {
+                      const listItem = trello.lists[column] || {};
+                      const cards = (listItem.cards || []).map((cardId: string) => trello.cards[cardId] || {})
                       return (
                         <TrelloList 
                           key={listItem.id}
@@ -77,10 +51,16 @@ function App() {
                       )
                     })}
                     {provided.placeholder}
+                    <Button type="text">
+                      Add another list
+                    </Button>
                   </>
                 </div>
               )}
+
             </Droppable>
+            dsds
+
             {/* <div className="listContainer">
               
             </div> */}

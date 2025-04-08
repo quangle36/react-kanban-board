@@ -9,3 +9,13 @@ export interface ICard {
   description: string,
   title: string
 }
+
+export interface ITrello {
+  columns: string[],
+  lists: {
+    [key in string]: IListItem
+  },
+  cards: {
+    [key in string]: ICard
+  }
+}

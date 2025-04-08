@@ -111,12 +111,12 @@ main {
   word-break: break-all;
   min-height: 10px;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   margin-bottom: 0;
 }
 
 .cardList .ant-card-body {
-  padding: 12px;
+  padding: 12px 0 12px 12px;
 }
 
 .cardItem + .cardItem {
@@ -174,7 +174,7 @@ main {
   min-height: 10px;
   overflow: auto;
   max-height: 85vh;
-  padding-right: 5px;
+  padding-right: 12px;
 }
 
 .header__logo {

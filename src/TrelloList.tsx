@@ -17,7 +17,7 @@ function TrelloList({ listItem, index, cards }: TrelloListProps) {
       draggableId={listItem.id} 
       index={index} 
     >
-      {(provided, snapshot) => (
+      {(provided) => (
         <div
           ref={provided.innerRef}
           {...provided.draggableProps}
@@ -25,8 +25,7 @@ function TrelloList({ listItem, index, cards }: TrelloListProps) {
           className='todoList'
         >
           <Droppable droppableId={listItem.id} type="CARD" direction='vertical'>
-            {(provided, snapshot) => (
-              
+            {(provided) => (
               <Card 
                 title={listItem.title}
                 className="cardList"
@@ -56,7 +55,6 @@ function TrelloList({ listItem, index, cards }: TrelloListProps) {
               >
                 <div
                   ref={provided.innerRef}
-                  // style={{ backgroundColor: snapshot.isDraggingOver ? 'blue' : 'grey' }}
                   {...provided.droppableProps}
                   className='trelloList_content'
                 >

@@ -14,7 +14,7 @@ const { Meta } = Card;
 function TrelloCard({ card, index }: TrelloCardProps) {
   return (
     <Draggable draggableId={card.id} index={index}>
-      {(provided, snapshot) => (
+      {(provided) => (
         <div
           ref={provided.innerRef}
           {...provided.draggableProps}
