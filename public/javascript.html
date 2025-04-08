@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript</title>
+  </head>
+  <body>
+    <h1>Javascript</h1>
+    <script>
+      /* data type
+        - primitive type (kiểu nguyên thủy): string, boolean, number, null, undefiend, Symbol
+        - non-primitive type (ko nguyên thủy): function, array, object, new Date ....
+      */
+
+      const dataFromBE = [
+        {
+          id: 1,
+          title: 'react'
+        },
+        {
+          id: 2,
+          title: 'angular'
+        },
+      ];
+      const id = 1;
+
+      function changeTitleById(dataSource = []) {
+        // const clonedData = [...dataSource]; // shallow clone (copy value, share reference)
+        const clonedData = JSON.parse(JSON.stringify(dataSource)); // deep clone (copy value, create new reference)
+        const index = clonedData.findIndex(item => item.id === id);
+        if (index === -1) return;
+
+        clonedData[index].title = 'dat tran'
+        return clonedData
+      }
+
+      const newData = changeTitleById(dataFromBE)
+
+      console.log({
+        newData,
+        dataFromBE
+      })
+    </script>
+  </body>
+</html>
