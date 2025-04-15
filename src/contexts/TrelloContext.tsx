@@ -38,6 +38,15 @@ export const TrelloProvider = ({ children }: React.PropsWithChildren) => {
 			if (type === 'LIST') {
 				// code logic drag drop list
 
+				setTrello((prev) => {
+					const newColumns = [...prev.columns];
+					newColumns.splice(source.index, 1);
+					newColumns.splice(destination.index, 0, draggableId);
+					return {
+						...prev,
+						columns: newColumns,
+					};
+				});
 				return; // return early
 			}
 
@@ -65,6 +74,19 @@ export const TrelloProvider = ({ children }: React.PropsWithChildren) => {
 				return;
 			}
 			// TODO: drag drop card different list
+			setTrello((prev) => {
+				const lists = JSON.parse(JSON.stringify(prev.lists));
+				lists[sourceDroppableId].cards.splice(sourceIndex, 1);
+				lists[destinationDroppableId].cards.splice(
+					destinationIndex,
+					0,
+					draggableId
+				);
+				return {
+					...prev,
+					lists,
+				};
+			});
 		},
 		[trello]
 	);

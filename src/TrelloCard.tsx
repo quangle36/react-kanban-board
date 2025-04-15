@@ -20,7 +20,6 @@ const { Meta } = Card;
 
 function TrelloCard({ card, index, listId }: TrelloCardProps) {
 	const { onDeleteCard } = useTrelloContext();
-	console.log('card', card);
 	return (
 		<Draggable draggableId={card.id} index={index}>
 			{(provided) => (
