@@ -45,47 +45,47 @@ drag drop card in same list
 
 // hash object
 export const mockData = {
-  columns: ['list1', 'list2'],
+  columns: ["list1", "list2"],
   lists: {
     list1: {
-      id: 'list1',
-      title: 'list1',
-      cards: ['card1-1']
+      id: "list1",
+      title: "list1",
+      cards: ["card1-1"],
     },
     list2: {
-      id: 'list2',
-      title: 'list2',
-      cards: ['card2-1', 'card2-2', 'card2-3', 'card2-4']
-    }
+      id: "list2",
+      title: "list2",
+      cards: ["card2-1", "card2-2", "card2-3", "card2-4"],
+    },
   },
   cards: {
     "card1-1": {
-      id: 'card1-1',
-      title: 'card1-1',
-      description: 'card1-1'
+      id: "card1-1",
+      title: "card1-1",
+      description: "card1-1",
     },
     "card2-1": {
-      id: 'card2-1',
-      title: 'card2-1',
-      description: 'card2-1'
+      id: "card2-1",
+      title: "card2-1",
+      description: "card2-1",
     },
     "card2-2": {
-      id: 'card2-2',
-      title: 'card2-2',
-      description: 'card2-2'
+      id: "card2-2",
+      title: "card2-2",
+      description: "card2-2",
     },
     "card2-3": {
-      id: 'card2-3',
-      title: 'card2-3',
-      description: 'card2-3'
+      id: "card2-3",
+      title: "card2-3",
+      description: "card2-3",
     },
     "card2-4": {
-      id: 'card2-4',
-      title: 'card2-4',
-      description: 'card2-4'
+      id: "card2-4",
+      title: "card2-4",
+      description: "card2-4",
     },
-  }
-}
+  },
+};
 
 /* 
 delete card2-2 in list2

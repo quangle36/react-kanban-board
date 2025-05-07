@@ -1,12 +1,12 @@
-import { Draggable } from 'react-beautiful-dnd'
-import { Card, Avatar } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { Draggable } from "@hello-pangea/dnd";
+import { Card, Avatar } from "antd";
+import { EditOutlined, EllipsisOutlined, SettingOutlined } from "@ant-design/icons";
 
-import { ICard } from './type'
+import { ICard } from "./type";
 
 interface TrelloCardProps {
-  card: ICard,
-  index: number
+  card: ICard;
+  index: number;
 }
 
 const { Meta } = Card;
@@ -15,19 +15,9 @@ function TrelloCard({ card, index }: TrelloCardProps) {
   return (
     <Draggable draggableId={card.id} index={index}>
       {(provided) => (
-        <div
-          ref={provided.innerRef}
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          className='card'
-        >
+        <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="card">
           <Card
-            cover={
-              <img
-                alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-              />
-            }
+            cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
             actions={[
               <SettingOutlined key="setting" />,
               <EditOutlined key="edit" />,
@@ -43,7 +33,7 @@ function TrelloCard({ card, index }: TrelloCardProps) {
         </div>
       )}
     </Draggable>
-  )
+  );
 }
 
-export default TrelloCard
+export default TrelloCard;
